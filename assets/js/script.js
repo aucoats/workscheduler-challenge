@@ -44,16 +44,17 @@ for (i = 0; i < $(".hour").length; i++) {
 $(".description").on("click", function() {
     var taskText = $(this).text().trim();
 
-    var taskInput = $("<textarea>").addClass("description col-8").val(taskText);
+    var taskInput = $("<input>").addClass("description col-8").val(taskText);
     $(this).replaceWith(taskInput);  
 
     var time = $(taskInput).find("")
     taskInput.trigger("focus");
 });
 
+// $(".description").on("blur", function() {
+//     var taskText = $(this).text().trim();
 
-// var createTask = function() {
-//     var taskItem = $("<span>").addClass("description");
-    
-//     taskDiv.appendChild(taskItem);
-// }
+//     var taskDiv = $("<div>").addClass("description").val(taskText);
+//     $(this).replaceWith(taskDiv);
+// });
+
