@@ -8,9 +8,6 @@ var currentDay = document.querySelector("#currentDay");
 currentDay.textContent = moment().format("dddd, MMMM Do");
 
 // changes styles of time-blocks relative to time of day
-// console.log(parseInt($(".hour").text().split("")));
-// console.log($(".hour").length); returns 9 
-
 for (i = 0; i < $(".hour").length; i++) {
     var time = $(".hour")[i].innerHTML; 
     var formatTime = time.split(" "); 
@@ -18,15 +15,12 @@ for (i = 0; i < $(".hour").length; i++) {
     
     var now = moment().format("h");
     now = parseInt(now);
-    
+
     if (now < 9) {
         now = now + 12;
     }
-    console.log(now);
     
-    // console.log(formatTime);
-
-    // console.log($(".hour").next(".time-block")[i]);
+    
     if (formatTime < 9) {
         formatTime = formatTime + 12;
     }   
