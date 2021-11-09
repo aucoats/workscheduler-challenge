@@ -1,6 +1,65 @@
+var tasks = {};
+
 var divEl = document.querySelector(".container");
+var taskDiv = document.querySelector(".description");
 var currentDay = document.querySelector("#currentDay");
 
-currentDay.textContent = moment().format("dddd, MMMM Do")
+// adds date in the header el with currentDay ID
+currentDay.textContent = moment().format("dddd, MMMM Do");
+
+// changes styles of time-blocks relative to time of day
+// console.log(parseInt($(".hour").text().split("")));
+// console.log($(".hour").length); returns 9 
+
+for (i = 0; i < $(".hour").length; i++) {
+    var time = $(".hour")[i].innerHTML; 
+    var formatTime = time.split(" "); 
+    formatTime = parseInt(formatTime);
+    
+    var now = moment().format("h");
+    now = parseInt(now);
+    
+    if (now < 9) {
+        now = now + 12;
+    }
+    console.log(now);
+    
+    // console.log(formatTime);
+
+    // console.log($(".hour").next(".time-block")[i]);
+    if (formatTime < 9) {
+        formatTime = formatTime + 12;
+    }   
+
+    if (formatTime > now) {
+        var toBe = $(".hour").next(".time-block")[i];
+        $(toBe).addClass("future");
+    }
+    else if (formatTime < now) {
+        var toBe = $(".hour").next(".time-block")[i];
+        $(toBe).addClass("past"); 
+    } else {
+        var toBe = $(".hour").next(".time-block")[i];
+        $(toBe).addClass("present");
+    }
+}
+
+// if (parseInt($(".hour").textContent) )
+
+// edit tasks
+$(".description").on("click", function() {
+    var taskText = $(this).text().trim();
+
+    var taskInput = $("<textarea>").addClass("description col-8").val(taskText);
+    $(this).replaceWith(taskInput);  
+
+    var time = $(taskInput).find("")
+    taskInput.trigger("focus");
+});
 
 
+// var createTask = function() {
+//     var taskItem = $("<span>").addClass("description");
+    
+//     taskDiv.appendChild(taskItem);
+// }
