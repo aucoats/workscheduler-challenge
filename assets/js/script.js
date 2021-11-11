@@ -41,20 +41,54 @@ for (i = 0; i < $(".hour").length; i++) {
 // if (parseInt($(".hour").textContent) )
 
 // edit tasks
-$(".description").on("click", function() {
+$(".description").on("click", function(event) {
     var taskText = $(this).text().trim();
 
-    var taskInput = $("<input>").addClass("description col-8").val(taskText);
+    var taskInput = $("<textarea>").val(taskText);
     $(this).replaceWith(taskInput);  
 
-    var time = $(taskInput).find("")
+    // console.log(this);
+
+    // GETS TIME FROM NEAREST TIME DOM
+    // var time = $(taskInput).closest(".row").find(".hour");
+    // time = parseInt(time[0].innerText.split(" ")[0]);
+    // console.log(time);    
+
     taskInput.trigger("focus");
+    event.stopPropagation();
+    
 });
 
-// $(".description").on("blur", function() {
-//     var taskText = $(this).text().trim();
+// $(".description").on("blur", "textarea", function(event) {
+//     $("textarea").trigger("blur");
+//     console.log(event);
+//     // var taskText = $(this).text().trim();
+//     // console.log(taskText);
 
-//     var taskDiv = $("<div>").addClass("description").val(taskText);
-//     $(this).replaceWith(taskDiv);
+//     // var newTaskDiv = $("<div>").addClass("description col-8").val(taskText);
+//     // console.log(newTaskDiv);
+//     // $("textarea").replaceWith(newTaskDiv);
+
+
+
+    
 // });
+
+function saveTasks() {
+    console.log(this);
+
+    // gets time from nearest time dom ele
+    var time = $(this).closest(".row").find(".hour");
+    time = parseInt(time[0].innerText.split(" ")[0]);
+    console.log(time);
+    
+    task = $(this).closest(".row").find("textarea")[0].innerHTML;
+    console.log(task);
+
+    task = taskDiv.innerHTML;
+}
+
+$(".saveBtn").on("click", saveTasks);
+
+
 

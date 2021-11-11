@@ -5,12 +5,13 @@ body {
 }
 
 textarea{
+  text-align: left;
   background: transparent;
   border: none;
   resize: none;
   color: #000000;
   border-left: 1px solid black;
-  padding: 10px;
+  padding: 0px;
 }
 
 .jumbotron {
@@ -21,12 +22,13 @@ textarea{
   border-bottom: 10px solid black;
 }
 
+
 .description{
   white-space: pre-wrap;
 }
 
 .time-block{
-  text-align: center;
+  text-align: left;
   border-radius: 15px;
 }
 
