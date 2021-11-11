@@ -117,7 +117,7 @@ function saveTasks() {
         tasks.seventeen.push(task);
     }
     
-    localStorage.setItem("tasks", tasks);
+    localStorage.setItem("tasks", JSON.stringify(tasks));
 };
 
 function loadTasks() {
