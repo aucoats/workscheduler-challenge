@@ -23,14 +23,23 @@ textarea{
   border-bottom: 10px solid black;
 }
 
-
+/* added styles to ensure editable element fits mockup */
 .description{
   white-space: pre-wrap;
-  overflow: hidden;
   overflow-y: scroll;
-  max-height: 30px;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  height: 100%;
+  width: 100%;
+  max-height: 60px;
   padding: 0;
   margin: 0;
+  position: relative;
+  bottom: 20px;
+}
+
+.description::-webkit-scrollbar {
+  display: none;
 }
 
 .time-block{
@@ -38,6 +47,8 @@ textarea{
   border-radius: 15px;
   padding: 0;
   max-height: 80px;
+  margin: 0;
+  position: relative;
 }
 
 .row {
