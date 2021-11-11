@@ -30,7 +30,6 @@ for (i = 0; i < $(".hour").length; i++) {
         now = now + 12;
     }
     
-    
     if (formatTime < 9) {
         formatTime = formatTime + 12;
     }   
@@ -48,32 +47,10 @@ for (i = 0; i < $(".hour").length; i++) {
     }
 }
 
-// if (parseInt($(".hour").textContent) )
-
-// edit tasks
-// $(".description").on("click", function(event) {
-//     var taskText = $(this).text().trim();
-
-//     var taskInput = $("<textarea>").val(taskText);
-//     $(this).replaceWith(taskInput);  
-
-//     // console.log(this);
-
-//     // GETS TIME FROM NEAREST TIME DOM
-//     // var time = $(taskInput).closest(".row").find(".hour");
-//     // time = parseInt(time[0].innerText.split(" ")[0]);
-//     // console.log(time);    
-
-//     taskInput.trigger("focus");
-//     event.stopPropagation();
-    
-// });
-
 $(".description").attr("contenteditable", "true");
 
 function saveTasks() {
-    console.log(this);
-
+    
     // gets time from nearest time dom ele
     var time = $(this).closest(".row").find(".hour");
     time = parseInt(time[0].innerText.split(" ")[0]);
@@ -86,14 +63,15 @@ function saveTasks() {
     time = parseInt(time);
     
     // declares task as user input or what already loaded on the page
+    // in closest description block
     task = $(this).closest(".row").find(".description")[0].innerHTML;
 
-    // checks time variable and saves task inappropriate array
+    // checks time variable and saves task in appropriate array
     if (time == 9) {
         tasks.nine.push(task);
     } 
     else if (time === 10) {
-        tasks.ten.push(ta==sk);
+        tasks.ten.push(task);
     }
     else if (time === 11) {
         tasks.eleven.push(task);
@@ -121,10 +99,82 @@ function saveTasks() {
 };
 
 function loadTasks() {
-    
-}
+    var pastTasks = JSON.parse(localStorage.getItem("tasks"));
 
+    
+    tasks.nine.push(pastTasks.nine);
+    tasks.ten.push(pastTasks.ten);
+    tasks.eleven.push(pastTasks.eleven);
+    tasks.twelve.push(pastTasks.twelve);
+    tasks.thirteen.push(pastTasks.thirteen);
+    tasks.fourteen.push(pastTasks.fourteen);
+    tasks.fifteen.push(pastTasks.fifteen);
+    tasks.sixteen.push(pastTasks.sixteen);
+    tasks.seventeen.push(pastTasks.seventeen);
+
+    
+    
+    if (!tasks.nine) {
+        $("#nine").text("Enter a task!");
+    }
+    if (!tasks.ten) {
+        $("#ten").text("Enter a task!");
+    }
+    if (!tasks.eleven) {
+        $("#eleven").text("Enter a task!");
+    }
+    if (!tasks.twelve) {
+        $("#twelve").text("Enter a task!");
+    }
+    if (!tasks.thirteen) {
+        $("#thirteen").text("Enter a task!");
+    }
+    if (!tasks.fourteen) {
+        $("#fourteen").text("Enter a task!");
+    }
+    if (!tasks.fifteen) {
+        $("#fifteen").text("Enter a task!");
+    }
+    if (!tasks.sixteen) {
+        $("#sixteen").text("Enter a task!");
+    }
+    if (!tasks.seventeen) {
+        $("#seventeen").text("Enter a task!");
+    }
+    
+    $("#nine").text(tasks.nine);
+    $("#ten").text(tasks.ten);
+    $("#eleven").text(tasks.eleven);
+    $("#twelve").text(tasks.twelve);
+    $("#thirteen").text(tasks.thirteen);
+    $("#fourteen").text(tasks.fourteen);
+    $("#fiteen").text(tasks.fiteen);
+    $("#sixteen").text(tasks.sixteen);
+    $("#seventeen").text(tasks.seventeen); 
+};
+
+loadTasks();
 $(".saveBtn").on("click", saveTasks);
 
 
 
+// if (parseInt($(".hour").textContent) )
+
+// edit tasks
+// $(".description").on("click", function(event) {
+//     var taskText = $(this).text().trim();
+
+//     var taskInput = $("<textarea>").val(taskText);
+//     $(this).replaceWith(taskInput);  
+
+//     // console.log(this);
+
+//     // GETS TIME FROM NEAREST TIME DOM
+//     // var time = $(taskInput).closest(".row").find(".hour");
+//     // time = parseInt(time[0].innerText.split(" ")[0]);
+//     // console.log(time);    
+
+//     taskInput.trigger("focus");
+//     event.stopPropagation();
+    
+// });

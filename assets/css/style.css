@@ -63,18 +63,17 @@ textarea{
   border-top: 1px dashed #000000;
 }
 
+/* removed text colors to improve readability */
 .past {
   background-color: #d3d3d3;
 }
 
 .present {
   background-color: #ff6961;
-  color: white;
 }
 
 .future {
   background-color: #77dd77;
-  color: white;
 }
 
 .saveBtn {
