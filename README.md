@@ -14,4 +14,4 @@ To create an editable scheduler in which users can input hourly tasks that will 
 ### Deployed Site
 Site deployed at [Work Day Scheduler](https://aucoats.github.io/workscheduler-challenge)
 
-Image of deployed site: ![deployed](./assets/images/deployed.jpg).
+Image of deployed site: ![deployed](./assets/images/deployed.png).
