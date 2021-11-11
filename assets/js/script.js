@@ -1,4 +1,14 @@
-var tasks = {};
+var tasks = {
+    nine: [],
+    ten: [],
+    eleven: [],
+    twelve: [],
+    thirteen: [],
+    fourteen: [],
+    fifteen: [],
+    sixteen: [],
+    seventeen: []
+};
 
 var divEl = document.querySelector(".container");
 var taskDiv = document.querySelector(".description");
@@ -41,38 +51,25 @@ for (i = 0; i < $(".hour").length; i++) {
 // if (parseInt($(".hour").textContent) )
 
 // edit tasks
-$(".description").on("click", function(event) {
-    var taskText = $(this).text().trim();
+// $(".description").on("click", function(event) {
+//     var taskText = $(this).text().trim();
 
-    var taskInput = $("<textarea>").val(taskText);
-    $(this).replaceWith(taskInput);  
+//     var taskInput = $("<textarea>").val(taskText);
+//     $(this).replaceWith(taskInput);  
 
-    // console.log(this);
+//     // console.log(this);
 
-    // GETS TIME FROM NEAREST TIME DOM
-    // var time = $(taskInput).closest(".row").find(".hour");
-    // time = parseInt(time[0].innerText.split(" ")[0]);
-    // console.log(time);    
+//     // GETS TIME FROM NEAREST TIME DOM
+//     // var time = $(taskInput).closest(".row").find(".hour");
+//     // time = parseInt(time[0].innerText.split(" ")[0]);
+//     // console.log(time);    
 
-    taskInput.trigger("focus");
-    event.stopPropagation();
-    
-});
-
-// $(".description").on("blur", "textarea", function(event) {
-//     $("textarea").trigger("blur");
-//     console.log(event);
-//     // var taskText = $(this).text().trim();
-//     // console.log(taskText);
-
-//     // var newTaskDiv = $("<div>").addClass("description col-8").val(taskText);
-//     // console.log(newTaskDiv);
-//     // $("textarea").replaceWith(newTaskDiv);
-
-
-
+//     taskInput.trigger("focus");
+//     event.stopPropagation();
     
 // });
+
+$(".description").attr("contenteditable", "true");
 
 function saveTasks() {
     console.log(this);
@@ -80,12 +77,51 @@ function saveTasks() {
     // gets time from nearest time dom ele
     var time = $(this).closest(".row").find(".hour");
     time = parseInt(time[0].innerText.split(" ")[0]);
-    console.log(time);
     
-    task = $(this).closest(".row").find("textarea")[0].innerHTML;
-    console.log(task);
+    if (time < 9) {
+        time = time + 12;
+    }
+    
+    // changes time into an integer
+    time = parseInt(time);
+    
+    // declares task as user input or what already loaded on the page
+    task = $(this).closest(".row").find(".description")[0].innerHTML;
 
-    task = taskDiv.innerHTML;
+    // checks time variable and saves task inappropriate array
+    if (time == 9) {
+        tasks.nine.push(task);
+    } 
+    else if (time === 10) {
+        tasks.ten.push(ta==sk);
+    }
+    else if (time === 11) {
+        tasks.eleven.push(task);
+    }
+    else if (time === 12) {
+        tasks.twelve.push(task);
+    }
+    else if (time === 13) {
+        tasks.thirteen.push(task);
+    }
+    else if (time === 14) {
+        tasks.fourteen.push(task);
+    }
+    else if (time === 15) {
+        tasks.fifteen.push(task);
+    }
+    else if (time === 16) {
+        tasks.sixteen.push(task);
+    }
+    else if (time === 17) {
+        tasks.seventeen.push(task);
+    }
+    
+    localStorage.setItem("tasks", tasks);
+};
+
+function loadTasks() {
+    
 }
 
 $(".saveBtn").on("click", saveTasks);
