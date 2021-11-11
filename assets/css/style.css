@@ -23,6 +23,14 @@ textarea{
   border-bottom: 10px solid black;
 }
 
+
+.row {
+  white-space: pre-wrap;
+  height: 80px;
+  border-top: 1px solid white;;
+  margin: 2px 0 0 0;
+}
+
 /* added styles to ensure editable element fits mockup */
 .description{
   white-space: pre-wrap;
@@ -44,17 +52,11 @@ textarea{
 
 .time-block{
   text-align: left;
-  border-radius: 15px;
+  /* border-radius: 15px; */
   padding: 0;
-  max-height: 80px;
   margin: 0;
+  max-height: 80px;
   position: relative;
-}
-
-.row {
-  white-space: pre-wrap;
-  height: 80px;
-  border-top: 1px solid white;;
 }
 
 .hour {
@@ -63,7 +65,6 @@ textarea{
   border-top: 1px dashed #000000;
 }
 
-/* removed text colors to improve readability */
 .past {
   background-color: #d3d3d3;
 }
@@ -82,6 +83,7 @@ textarea{
   border-bottom-right-radius: 15px;
   background-color: #06AED5;
   color: white;
+  margin: 1px 0 0 0;
 }
 
 .saveBtn i:hover {
