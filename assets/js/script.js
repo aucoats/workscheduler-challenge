@@ -1,14 +1,14 @@
-var tasks = {
-    nine: [],
-    ten: [],
-    eleven: [],
-    twelve: [],
-    thirteen: [],
-    fourteen: [],
-    fifteen: [],
-    sixteen: [],
-    seventeen: []
-};
+// var tasks = {
+//     nine: [],
+//     ten: [],
+//     eleven: [],
+//     twelve: [],
+//     thirteen: [],
+//     fourteen: [],
+//     fifteen: [],
+//     sixteen: [],
+//     seventeen: []
+// };
 
 var divEl = document.querySelector(".container");
 var taskDiv = document.querySelector(".description");
@@ -47,11 +47,22 @@ for (i = 0; i < $(".hour").length; i++) {
     }
 }
 
-$(".description").attr("contenteditable", "true");
+
 
 function saveTasks() {
-    
-    // gets time from nearest time dom ele
+    // declares tasks array and saves current text as task.hour value
+    var tasks = {
+        nine: [$("#nine").closest(".row").find(".description")[0].innerHTML],
+        ten: [$("#ten").closest(".row").find(".description")[0].innerHTML],
+        eleven: [$("#eleven").closest(".row").find(".description")[0].innerHTML],
+        twelve: [$("#twelve").closest(".row").find(".description")[0].innerHTML],
+        thirteen: [$("#thirteen").closest(".row").find(".description")[0].innerHTML],
+        fourteen: [$("#fourteen").closest(".row").find(".description")[0].innerHTML],
+        fifteen: [$("#fifteen").closest(".row").find(".description")[0].innerHTML],
+        sixteen: [$("#sixteen").closest(".row").find(".description")[0].innerHTML],
+        seventeen: [$("#seventeen").closest(".row").find(".description")[0].innerHTML]
+    };
+    // gets time from nearest time dom ele of change/click event
     var time = $(this).closest(".row").find(".hour");
     time = parseInt(time[0].innerText.split(" ")[0]);
     
@@ -59,7 +70,7 @@ function saveTasks() {
         time = time + 12;
     }
     
-    // changes time into an integer
+    // parses time into an integer
     time = parseInt(time);
     
     // declares task as user input or what already loaded on the page
@@ -94,13 +105,14 @@ function saveTasks() {
     else if (time === 17) {
         tasks.seventeen.splice(0, 1, task);
     }
-    
+
     localStorage.setItem("tasks", JSON.stringify(tasks));
 };
 
 function loadTasks() {
     var pastTasks = JSON.parse(localStorage.getItem("tasks"));
     
+    // declares new array for tasks if localStorage tasks is empty
     if (!pastTasks) { 
         var tasks = {
             nine: [],
@@ -113,33 +125,28 @@ function loadTasks() {
             sixteen: [],
             seventeen: []
         };
-        console.log(pastTasks);
-        console.log(tasks);
+
+        $("#nine").text("Enter text here!");
+
     } else if (pastTasks) {
-
+        // sets new tasks array for saving if localStorage retrieval was successful
+        tasks = pastTasks;
+       
+        // populates text content using new tasks array
+        $("#nine").text(tasks.nine);
+        $("#ten").text(tasks.ten);
+        $("#eleven").text(tasks.eleven);
+        $("#twelve").text(tasks.twelve);
+        $("#thirteen").text(tasks.thirteen);
+        $("#fourteen").text(tasks.fourteen);
+        $("#fiteen").text(tasks.fifteen);
+        $("#sixteen").text(tasks.sixteen);
+        $("#seventeen").text(tasks.seventeen); 
     }
-    tasks.nine.splice(0, 1, pastTasks.nine);
-    tasks.ten.splice(0, 1, pastTasks.ten);
-    tasks.eleven.splice(0, 1, pastTasks.eleven);
-    tasks.twelve.splice(0, 1, pastTasks.twelve);
-    tasks.thirteen.splice(0, 1, pastTasks.thirteen);
-    tasks.fourteen.splice(0, 1, pastTasks.fourteen);
-    tasks.fifteen.splice(0, 1, pastTasks.fifteen);
-    tasks.sixteen.splice(0, 1, pastTasks.sixteen);
-    tasks.seventeen.splice(0, 1, pastTasks.seventeen);
-
-    
-    $("#nine").text(tasks.nine);
-    $("#ten").text(tasks.ten);
-    $("#eleven").text(tasks.eleven);
-    $("#twelve").text(tasks.twelve);
-    $("#thirteen").text(tasks.thirteen);
-    $("#fourteen").text(tasks.fourteen);
-    $("#fiteen").text(tasks.fifteen);
-    $("#sixteen").text(tasks.sixteen);
-    $("#seventeen").text(tasks.seventeen); 
+        
 };
 
 loadTasks();
+$(".description").attr("contenteditable", "true").on("DOMSubtreeModified", saveTasks);
 $(".saveBtn").on("click", saveTasks);
 
