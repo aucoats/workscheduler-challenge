@@ -100,47 +100,34 @@ function saveTasks() {
 
 function loadTasks() {
     var pastTasks = JSON.parse(localStorage.getItem("tasks"));
+    
+    if (!pastTasks) { 
+        var tasks = {
+            nine: [],
+            ten: [],
+            eleven: [],
+            twelve: [],
+            thirteen: [],
+            fourteen: [],
+            fifteen: [],
+            sixteen: [],
+            seventeen: []
+        };
+        console.log(pastTasks);
+        console.log(tasks);
+    } else if (pastTasks) {
 
-    
-    tasks.nine.push(pastTasks.nine);
-    tasks.ten.push(pastTasks.ten);
-    tasks.eleven.push(pastTasks.eleven);
-    tasks.twelve.push(pastTasks.twelve);
-    tasks.thirteen.push(pastTasks.thirteen);
-    tasks.fourteen.push(pastTasks.fourteen);
-    tasks.fifteen.push(pastTasks.fifteen);
-    tasks.sixteen.push(pastTasks.sixteen);
-    tasks.seventeen.push(pastTasks.seventeen);
+    }
+    tasks.nine.splice(0, 1, pastTasks.nine);
+    tasks.ten.splice(0, 1, pastTasks.ten);
+    tasks.eleven.splice(0, 1, pastTasks.eleven);
+    tasks.twelve.splice(0, 1, pastTasks.twelve);
+    tasks.thirteen.splice(0, 1, pastTasks.thirteen);
+    tasks.fourteen.splice(0, 1, pastTasks.fourteen);
+    tasks.fifteen.splice(0, 1, pastTasks.fifteen);
+    tasks.sixteen.splice(0, 1, pastTasks.sixteen);
+    tasks.seventeen.splice(0, 1, pastTasks.seventeen);
 
-    
-    
-    if (!tasks.nine) {
-        $("#nine").text("Enter a task!");
-    }
-    if (!tasks.ten) {
-        $("#ten").text("Enter a task!");
-    }
-    if (!tasks.eleven) {
-        $("#eleven").text("Enter a task!");
-    }
-    if (!tasks.twelve) {
-        $("#twelve").text("Enter a task!");
-    }
-    if (!tasks.thirteen) {
-        $("#thirteen").text("Enter a task!");
-    }
-    if (!tasks.fourteen) {
-        $("#fourteen").text("Enter a task!");
-    }
-    if (!tasks.fifteen) {
-        $("#fifteen").text("Enter a task!");
-    }
-    if (!tasks.sixteen) {
-        $("#sixteen").text("Enter a task!");
-    }
-    if (!tasks.seventeen) {
-        $("#seventeen").text("Enter a task!");
-    }
     
     $("#nine").text(tasks.nine);
     $("#ten").text(tasks.ten);
@@ -148,7 +135,7 @@ function loadTasks() {
     $("#twelve").text(tasks.twelve);
     $("#thirteen").text(tasks.thirteen);
     $("#fourteen").text(tasks.fourteen);
-    $("#fiteen").text(tasks.fiteen);
+    $("#fiteen").text(tasks.fifteen);
     $("#sixteen").text(tasks.sixteen);
     $("#seventeen").text(tasks.seventeen); 
 };
