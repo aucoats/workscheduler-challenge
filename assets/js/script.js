@@ -1,15 +1,3 @@
-// var tasks = {
-//     nine: [],
-//     ten: [],
-//     eleven: [],
-//     twelve: [],
-//     thirteen: [],
-//     fourteen: [],
-//     fifteen: [],
-//     sixteen: [],
-//     seventeen: []
-// };
-
 var divEl = document.querySelector(".container");
 var taskDiv = document.querySelector(".description");
 var currentDay = document.querySelector("#currentDay");
